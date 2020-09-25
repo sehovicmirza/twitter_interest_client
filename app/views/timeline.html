@@ -1,0 +1,72 @@
+<!-- INTERESTS -->
+<div class="container" id="interestsContainer">
+	<div class="scrollBox" id="interestsScrollBox">
+		<!-- Trigger button for newInterestModal -->
+	    <button class="btn btn-default" data-toggle="modal" data-target="#newInterestModal">New interest</button><div><br></div>
+	        <!-- List of all registered interests -->
+			<ul id="interestList">
+				<li ng-repeat="interest in interests">
+					<!-- button showTimeline for interest --> 
+					<button type="button" ng-click="showTimeline(interest.id)"class="btn btn-primary" id="showTimelineBtn">
+						<!--Interest information-->
+						<div id="interestAttributes">
+							<label id="screenName"><b>{{interest.screen_name}}</b></label><br>
+							 <ul class="list-inline" >
+							   <li ng-repeat="hashtag in interest.hashtags"> #{{hashtag.text}}</li>
+							 </ul><br>
+							 <ul class="list-inline" >
+							   <li ng-repeat="mention in interest.mentions"> @{{mention.text}}</li>
+							 </ul>
+						</div>
+					</button>
+					<!-- image button remove interest-->
+					<input type="image" id="removeInterestBtn" src="images/delete.png" ng-click="removeInterest(interest.id)"/>
+					<!-- space between interests -->
+					<div><br></div>
+				</li>
+			</ul>
+	</div>
+</div>
+
+<!-- INTEREST TIMELINE -->
+<div id="timelineWrapper">
+	<div class="scrollBox" id="timelineScrollBox">
+		<div ng-bind-html = "tweets" id="tweets"></div>
+	</div>
+</div>
+
+<!-- ADD NEW INTEREST MODAL -->
+<div class="modal fade" id="newInterestModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title">Register new interest</h5>
+            </div>
+            <div class="modal-body">
+               <div class="container" id="interestFormContainer">
+            	<!-- ADD NEW INTEREST form -->
+               <form class="form-vertical" role="form" ng-submit="createInterest()">
+				    <div class="form-group">
+				      <label for="screen_name">Screen name:</label>
+				      <input type="text" class="form-control" id="screen_name" ng-model="screen_name" placeholder="tweetAuthor">
+				    </div>
+				    <div class="form-group">
+				      <label for="hashtags">Hashtags:</label>
+				      <input type="text" class="form-control" id="hashtags" ng-model="hashtags" ng-list="#" ng-trim="true" placeholder="#example #something #foo">
+				    </div>
+				    <div class="form-group">
+				      <label for="mentions">User mentions:</label>
+				      <input type="text" class="form-control" id="mentions" ng-model="mentions" ng-list="@" ng-trim="true" placeholder="@example @someone @foo">
+				    </div>
+				    <!-- button add interest-->
+				    <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
+				</form>
+			    </div>
+            </div>
+        </div>
+    </div>
+</div>
+

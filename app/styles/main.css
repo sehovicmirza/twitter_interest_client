@@ -1,0 +1,55 @@
+.list-inline, #screenName, #interestAttributes
+{
+	float: left;
+}
+.scrollBox
+{
+	overflow-y: scroll;
+	position: absolute;
+}
+#interestsScrollBox
+{
+	width: 30%;
+	height: 80%;
+}
+#timelineScrollBox
+{
+	width: 50%;
+	height: 80%
+}
+#interestList
+{
+	list-style-type: none;
+}
+#tweets
+{
+	 float: right;
+	 width: 80%;
+}
+#interestsContainer
+{
+	width: 40%;
+	float: left;
+}
+#interestFormContainer
+{
+	width: 80%;
+}
+#timelineWrapper
+{
+	width: 60%; 
+	float: right;
+}
+#showTimelineBtn
+{
+	width: 80%;
+}
+#removeInterestBtn
+{
+	float: right;
+	padding-right: 10%;
+}
+#submitBtn
+{
+	float: right;
+}
